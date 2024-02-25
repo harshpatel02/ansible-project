@@ -1,0 +1,9 @@
+// to ping all hosts
+ansible all --key-file ~/.ssh/ansible -i hosts -m ping
+
+// to list hosts
+ansible all --list-hosts
+
+// gives all kinds of info of servers
+ansible all -m gather_facts
+ansible all -m gather_facts --limit 172.17.0.2

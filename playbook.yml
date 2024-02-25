@@ -1,0 +1,23 @@
+---
+  - name: sample
+    hosts: all
+    become: yes 
+
+    tasks:
+    - name: install neo
+      apt:
+        name: neofetch
+        state: present
+        update_cache: yes
+
+# ---
+# - name: My Playbook
+#   hosts: your_target_servers
+#   become: true
+#   become_method: sudo
+#   become_user: root
+#   vars:
+#     ansible_become_pass: your_sudo_password
+#   tasks:
+#     - name: Your task
+#       # Your task details here
