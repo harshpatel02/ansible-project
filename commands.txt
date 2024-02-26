@@ -21,3 +21,10 @@ ansible-playbook --ask-become-pass playbook.yml
     name: httpd
     state: latest
     when: ansible_distribution == "CentOS"
+
+// list tags
+ansible-playbook --list-tags playbook.yml
+
+// run plays with specific tags
+ansible-playbook --tags "ubuntu,centos" --ask-become-pass playbook.yml
+ansible-playbook --tags ubuntu --ask-become-pass playbook.yml

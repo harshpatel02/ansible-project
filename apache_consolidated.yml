@@ -1,0 +1,21 @@
+---
+  - name: install apache and php
+    hosts: all
+    become: true
+    become_method: sudo
+    become_user: root
+    vars:
+      ansible_become_pass: password
+    tasks:
+      - name: install apache on any OS
+        package:
+          name: 
+          - "{{ apache_pkg }}"
+          - "{{ php_pkg }}"
+          state: latest
+          update_cache: yes
+        when: ansible_distribution in ["Ubuntu", "Debian"]
+
+# but inside inventory file we need to configure vars
+# 172.17.0.2 apache_pkg=apache2 php_pkg=libapache2-mod-php #(for ubuntu)
+# 172.17.0.3 apache_pkg=httpd php_pkg=php #(for centos)
