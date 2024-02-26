@@ -7,3 +7,12 @@ ansible all --list-hosts
 // gives all kinds of info of servers
 ansible all -m gather_facts
 ansible all -m gather_facts --limit 172.17.0.2
+
+//elevated commands
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+
+// install a pkg(latest)
+ansible all -m apt -a "name=vim-nox state=latest" --become --ask-become-pass
+
+// Upgrade all the package updates that are available
+ansible all -m apt -a upgrade=dist --become --ask-become-pass

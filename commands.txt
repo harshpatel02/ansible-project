@@ -1,0 +1,23 @@
+// for user-elevated commands, we need to provide flag
+ansible-playbook --ask-become-pass playbook.yml
+
+---when conditionals
+
+  apt:
+    update_cache: yes
+    when: ansible_distribution in ["Ubuntu", "Debian"]  // multiple entries
+    when: ansible_distribution == "Ubuntu"              // single entry
+  
+  apt:
+    name: apache2
+    state: latest
+    when: ansible_distribution == "Ubuntu"
+  
+  dnf:
+    update_cache: yes
+    when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2"  // multiple conditionals
+
+  dnf:
+    name: httpd
+    state: latest
+    when: ansible_distribution == "CentOS"
